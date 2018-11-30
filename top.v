@@ -16,7 +16,7 @@ module top(
 	output wire Ram1_WE, // Ram1 write enable
 	output wire[17:0] Ram1_address, // Ram1 address
 	inout wire[15:0] Ram1_data, // Ram1 data
-	output wire[2:0] AluCtrl1
+	output wire[15:0] Src1
 	);
 	
 	assign Clk = ~Clk0;
@@ -41,7 +41,7 @@ module top(
 	wire[4:0] LastOp;
 	wire[10:0] Src;
 	wire InsJ1; // need to jump
-	wire[15:0] Src1; // Jump instruction dst address
+	// wire[15:0] Src1; // Jump instruction dst address
 	wire InsBRst1; // need to reset branch
 	wire[15:0] InsBRstAddr1; // Branch instruction reset address
 	wire[15:0] Dest;
@@ -83,7 +83,7 @@ module top(
 	wire[1:0] MuxCtrl21;
 	wire[15:0] Src2_pre;
 	wire[15:0] Src2;
-	// wire[2:0] AluCtrl1;
+	wire[2:0] AluCtrl1;
 	wire[15:0] Result1;
 	wire Zero1;
 	wire[3:0] RegWriteIndex2;

@@ -19,35 +19,35 @@ module registers(
 			for(i = 0; i < 8; i = i + 1)  r[i] <= 0;
 		end
 
-	assign ReadData1 = Rs == `REG0 ? 0 : r[Rs];
-	assign ReadData2 = Rt == `REG0 ? 0 : r[Rt];
+	assign ReadData1 = Rs == `REG0 ? 16'b0000000000000000 : r[Rs];
+	assign ReadData2 = Rt == `REG0 ? 16'b0000000000000000 : r[Rt];
 	 
 	 // 写寄存器
 	always@(negedge Clk or negedge Rst) begin
 		if (!Rst) begin
-			r[0] <= 0;
-			r[1] <= 0;
-			r[2] <= 0;
-			r[3] <= 0;
-			r[4] <= 0;
-			r[5] <= 0;
-			r[6] <= 0;
-			r[7] <= 0;
-			r[8] <= 0;
-			r[9] <= 0;
-			r[10] <= 0;
-			r[11] <= 0;
-			r[12] <= 0;
-			r[13] <= 0;
-			r[14] <= 0;
-			r[15] <= 0;
+			r[0] <= 16'b0000000000000000;
+			r[1] <= 16'b0000000000000000;
+			r[2] <= 16'b0000000000000000;
+			r[3] <= 16'b0000000000000000;
+			r[4] <= 16'b0000000000000000;
+			r[5] <= 16'b0000000000000000;
+			r[6] <= 16'b0000000000000000;
+			r[7] <= 16'b0000000000000000;
+			r[8] <= 16'b0000000000000000;
+			r[9] <= 16'b0000000000000000;
+			r[10] <= 16'b0000000000000000;
+			r[11] <= 16'b0000000000000000;
+			r[12] <= 16'b0000000000000000;
+			r[13] <= 16'b0000000000000000;
+			r[14] <= 16'b0000000000000000;
+			r[15] <= 16'b0000000000000000;
 		end else
 		// 如果寄存器不为0，并且RegWre为真，写入数据
 		if (RegWre && WriteReg != 0 && WriteReg != `T)begin
 			r[WriteReg] <= WriteData;
 		end else if(RegWre && WriteReg == `T)begin
 			r[WriteReg] <= WriteData == 0;
-		  end
+		end
 	 end 
 
 endmodule
