@@ -3,7 +3,7 @@
 module if_id(
 	input wire Clk,
     input wire Rst,
-    
+
     input wire[15:0] PcAddr4, //当前地址
     input wire[15:0] InsOut, //当前指令
     input wire IfIdRst,
@@ -16,7 +16,16 @@ module if_id(
     output reg[10:0] Src //接给符号位扩�
 	);
 
-	always @(posedge Clk) begin
+	always @(posedge Clk or negedge Rst) begin
+        if (!Rst) begin
+            PcAddr0 <= 0;
+            OP <= `NOP;
+            RegIn1 <= 0;
+            RegIn2 <= 0;
+            RegIn3 <= 0;
+            LastOp <= 0;
+            Src <= 0;
+        end else
         if(0 == IfIdRst)begin
             PcAddr0 <= PcAddr4;
             OP <= InsOut[15:11];

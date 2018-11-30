@@ -16,7 +16,7 @@ module top(
 	output wire Ram1_WE, // Ram1 write enable
 	output wire[17:0] Ram1_address, // Ram1 address
 	inout wire[15:0] Ram1_data, // Ram1 data
-	output wire[15:0] Result1
+	output wire[2:0] AluCtrl1
 	);
 	
 	assign Clk = ~Clk0;
@@ -83,8 +83,8 @@ module top(
 	wire[1:0] MuxCtrl21;
 	wire[15:0] Src2_pre;
 	wire[15:0] Src2;
-	wire[2:0] AluCtrl1;
-	// wire[15:0] Result1;
+	// wire[2:0] AluCtrl1;
+	wire[15:0] Result1;
 	wire Zero1;
 	wire[3:0] RegWriteIndex2;
 	wire RegWrite2;
@@ -139,6 +139,7 @@ module top(
 
 	if_id _if_id(
 		.Clk(Clk), 
+		.Rst(Rst),
 		.PcAddr4(PcAddr4), 
 		.InsOut(InsOut), 
 		.IfIdRst(IfIdRst), 
@@ -210,6 +211,7 @@ module top(
 
 	id_ex _id_ex(
 		.Clk(Clk), 
+		.Rst(Rst),
 		.RegWrite0(RegWrite0), 
 		.MemotoReg0(MemotoReg0), 
 		.MemWrite0(MemWrite0), 
@@ -305,6 +307,7 @@ module top(
 
 	ex_mem _ex_mem(
 		.Clk(Clk),
+		.Rst(Rst),
 		.RegWrite1(RegWrite1),
 		.MemotoReg1(MemotoReg1),
 		.MemWrite1(MemWrite1),
@@ -339,6 +342,7 @@ module top(
 
 	mem_wb _mem_wb(
 		.Clk(Clk),
+		.Rst(Rst),
 		.RegWrite2(RegWrite2),
 		.MemotoReg2(MemotoReg2),
 		.DataOut2(DataOut2),

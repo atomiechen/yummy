@@ -3,8 +3,11 @@
 	delete mem0 mem1
 */
 
+`include "config.v"
+
 module id_ex(
 	input wire Clk,
+	input wire Rst,
 
 	input wire RegWrite0,
 	input wire MemotoReg0,
@@ -54,24 +57,44 @@ module id_ex(
 	output reg[15:0] Dest1
 	);
 
-	always @(posedge Clk) begin
-		RegWrite1 <= RegWrite0;
-		MemotoReg1 <= MemotoReg0;
-		MemWrite1 <= MemWrite0;
-		MemRead1 <= MemRead0;
-		Mem1 <= Mem0;
-		AluOp1 <= AluOp0;
-		PcAddr1 <= PcAddr0;
-		RegData11 <= RegData10;
-		RegData21 <= RegData20;
-		Flag1 <= Flag0;
-		RegWriteIndex1 <= RegWriteIndex0;
-		RegReadIndex11 <= RegReadIndex10;
-		RegReadIndex21 <= RegReadIndex20;
-		InsJ1 <= InsJ0;
-		InsB1 <= InsB0;
-		AluSrc1 <= AluSrc;
-		Dest1 <= Dest;
+	always @(posedge Clk or negedge Rst) begin
+		if (!Rst) begin
+			RegWrite1 <= 0;
+			MemotoReg1 <= 0;
+			MemWrite1 <= 0;
+			MemRead1 <= 0;
+			Mem1 <= 0;
+			AluOp1 <= `no_alu_op;
+			PcAddr1 <= 1;
+			RegData11 <= 0;
+			RegData21 <= 0;
+			Flag1 <= 0;
+			RegWriteIndex1 <= 0;
+			RegReadIndex11 <= 0;
+			RegReadIndex21 <= 0;
+			InsJ1 <= 0;
+			InsB1 <= `NB;
+			AluSrc1 <= 0;
+			Dest1 <= 0;
+		end else begin
+			RegWrite1 <= RegWrite0;
+			MemotoReg1 <= MemotoReg0;
+			MemWrite1 <= MemWrite0;
+			MemRead1 <= MemRead0;
+			Mem1 <= Mem0;
+			AluOp1 <= AluOp0;
+			PcAddr1 <= PcAddr0;
+			RegData11 <= RegData10;
+			RegData21 <= RegData20;
+			Flag1 <= Flag0;
+			RegWriteIndex1 <= RegWriteIndex0;
+			RegReadIndex11 <= RegReadIndex10;
+			RegReadIndex21 <= RegReadIndex20;
+			InsJ1 <= InsJ0;
+			InsB1 <= InsB0;
+			AluSrc1 <= AluSrc;
+			Dest1 <= Dest;
+		end
 	end
 
 endmodule

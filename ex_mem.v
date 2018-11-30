@@ -1,5 +1,6 @@
 module ex_mem(
 	input wire Clk,
+	input wire Rst,
 
 	input wire RegWrite1,
 	input wire MemotoReg1,
@@ -18,14 +19,24 @@ module ex_mem(
 	output reg[3:0] RegWriteIndex2
 	);
 
-	always @(posedge Clk) begin
-		RegWrite2 <= RegWrite1;
-		MemotoReg2 <= MemotoReg1;
-		MemWrite2 <= MemWrite1;
-		MemRead2 <= MemRead1;
-		Result2 <= Result1;
-		DataIn2 <= DataIn1;
-		RegWriteIndex2 <= RegWriteIndex1;
+	always @(posedge Clk or negedge Rst) begin
+		if (!Rst) begin
+			RegWrite2 <= 0;
+			MemotoReg2 <= 0;
+			MemWrite2 <= 0;
+			MemRead2 <= 0;
+			Result2 <= 0;
+			DataIn2 <= 0;
+			RegWriteIndex2 <= 0;
+		end else begin
+			RegWrite2 <= RegWrite1;
+			MemotoReg2 <= MemotoReg1;
+			MemWrite2 <= MemWrite1;
+			MemRead2 <= MemRead1;
+			Result2 <= Result1;
+			DataIn2 <= DataIn1;
+			RegWriteIndex2 <= RegWriteIndex1;
+		end
 	end
 
 endmodule
