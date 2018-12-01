@@ -8,6 +8,7 @@
 module id_ex(
 	input wire Clk,
 	input wire Rst,
+	input wire Pause,
 
 	input wire RegWrite0,
 	input wire MemotoReg0,
@@ -57,6 +58,24 @@ module id_ex(
 	output reg[15:0] Dest1
 	);
 
+	reg RegWrite1_tmp;
+	reg MemotoReg1_tmp;
+	reg MemWrite1_tmp;
+	reg MemRead1_tmp;
+	reg Mem1_tmp;
+	reg[3:0] AluOp1_tmp;
+	reg[15:0] PcAddr1_tmp;
+	reg[15:0] RegData11_tmp;
+	reg[15:0] RegData21_tmp;
+	reg[1:0] Flag1_tmp;
+	reg[3:0] RegWriteIndex1_tmp;
+	reg[3:0] RegReadIndex11_tmp;
+	reg[3:0] RegReadIndex21_tmp;
+	reg InsJ1_tmp;
+	reg[1:0] InsB1_tmp;
+	reg AluSrc1_tmp;
+	reg[15:0] Dest1_tmp;
+
 	always @(posedge Clk or negedge Rst) begin
 		if (!Rst) begin
 			RegWrite1 <= 0;
@@ -76,7 +95,10 @@ module id_ex(
 			InsB1 <= `NB;
 			AluSrc1 <= 0;
 			Dest1 <= 0;
-		end else begin
+		end else if (Pause == 1) begin
+			
+		end
+		else begin
 			RegWrite1 <= RegWrite0;
 			MemotoReg1 <= MemotoReg0;
 			MemWrite1 <= MemWrite0;

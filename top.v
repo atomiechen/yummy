@@ -99,6 +99,7 @@ module top(
 	wire MemotoReg3;
 	wire[15:0] DataOut3;
 	wire[15:0] Result3;
+	wire Pause;
 
 	// section 4
 
@@ -214,6 +215,7 @@ module top(
 	id_ex _id_ex(
 		.Clk(Clk), 
 		.Rst(Rst),
+		.Pause(Pause),
 		.RegWrite0(RegWrite0), 
 		.MemotoReg0(MemotoReg0), 
 		.MemWrite0(MemWrite0), 

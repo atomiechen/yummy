@@ -112,7 +112,7 @@ always @(*) begin
 					RegOut1		<=		`REG0;
 					AluSrc 		<= 		0;
 					MemotoReg 	<= 		0;
-					RegWrite	<= 		0;
+					RegWrite	<= 		1;
 					MemWrite 	<= 		0;
 					Branch 		<= 		`NB;
 					Jump 		<= 		0;
@@ -301,7 +301,7 @@ always @(*) begin
 							RegOut1		<=		{1'b0, RegIn1};
 							AluSrc 		<= 		0;//ÒªÈ¡Á¢¼´Êý
 							MemotoReg 	<= 		0;//ÄÚ´æÐ´µ½¼Ä´æÆ÷
-							RegWrite	<= 		0;//Ð´¼Ä´æÆ÷
+							RegWrite	<= 		0;//¶Á¼Ä´æÆ÷
 							MemWrite 	<= 		0;
 							Branch 		<= 		`NB;
 							Jump 		<= 		1;
@@ -397,7 +397,7 @@ always @(*) begin
 					RegOut1		<=		{1'b0, RegIn2};
 					AluSrc 		<= 		1;//ÒªÈ¡Á¢¼´Êý
 					MemotoReg 	<= 		0;//ÄÚ´æÐ´µ½¼Ä´æÆ÷
-					RegWrite	<= 		0;//Ð´¼Ä´æÆ÷
+					RegWrite	<= 		1;//Ð´¼Ä´æÆ÷
 					MemWrite 	<= 		0;
 					Branch 		<= 		`NB;
 					Jump 		<= 		0;
@@ -411,7 +411,7 @@ always @(*) begin
 					RegOut1		<=		{1'b0, RegIn2};
 					AluSrc 		<= 		1;//ÒªÈ¡Á¢¼´Êý
 					MemotoReg 	<= 		0;//ÄÚ´æÐ´µ½¼Ä´æÆ÷
-					RegWrite	<= 		0;//Ð´¼Ä´æÆ÷
+					RegWrite	<= 		1;//Ð´¼Ä´æÆ÷
 					MemWrite 	<= 		0;
 					Branch 		<= 		`NB;
 					Jump 		<= 		0;
