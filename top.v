@@ -115,6 +115,7 @@ module top(
 	pc pc4(
 		.Clk(Clk), 
 		.Rst(Rst),
+		.Pause(Pause),
 		.AddrIn(AddrIn), 
 		.PcRst(PcRst), 
 		.PcRstAddr(PcRstAddr), 
@@ -142,6 +143,7 @@ module top(
 	if_id _if_id(
 		.Clk(Clk), 
 		.Rst(Rst),
+		.Pause(Pause),
 		.PcAddr4(PcAddr4), 
 		.InsOut(InsOut), 
 		.IfIdRst(IfIdRst), 
@@ -364,6 +366,14 @@ module top(
 		.In2(Result3),
 		.Ctrl(MemotoReg3),
 		.Out(WriteData)
+		);
+
+	pause _pause(
+		.MemotoReg1(MemotoReg1),
+		.RegWriteIndex1(RegWriteIndex1),
+		.RegReadIndex10(RegReadIndex10),
+		.RegReadIndex20(RegReadIndex20),
+		.Pause(Pause)
 		);
 
 endmodule
