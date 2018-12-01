@@ -433,7 +433,7 @@ always @(*) begin
 			Jump 		<= 		0;
 			MemRead		<= 		0;//读取内存
 			AluOp 	    <= 		`add_ctr;
-			SrcGet		<=      `IM8;//取3位立即数
+			SrcGet		<=      `IM_Zero8;//取3位立即数
 		end
 		`LW:begin
 			RegOut3 	<= 		{1'b0, RegIn2};

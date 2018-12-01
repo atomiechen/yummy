@@ -37,6 +37,10 @@ always@(*) begin
 		`IM_TO8: begin
 			Dest <= 16'b0000000000001000;
 		end
+		`IM_Zero8: begin
+			Dest[7:0] <= Src[7:0];
+			Dest[15:8] <= 8'b00000000;
+		end
 		default: begin
 			Dest <= 0;
 		end

@@ -64,4 +64,5 @@
 `define IM3 3'b100
 `define IM5 3'b101
 `define IM_TO8 3'b110
+`define IM_Zero8 3'b111
 
