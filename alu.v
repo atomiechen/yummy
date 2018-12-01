@@ -43,8 +43,8 @@ module alu(
 				Zero1 <= ((Src1 >> Src2) == 0);
 			end
 			default: begin
-				Result1 <= 16'bz;
-				Zero1 <= 1'bz;
+				Result1 <= 0;
+				Zero1 <= 0;
 			end
 		endcase
 	end

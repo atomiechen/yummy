@@ -16,7 +16,9 @@ module top(
 	output wire Ram1_WE, // Ram1 write enable
 	output wire[17:0] Ram1_address, // Ram1 address
 	inout wire[15:0] Ram1_data, // Ram1 data
-	output wire[15:0] Src1
+	output wire[15:0] Src1,
+	output wire[15:0] Src2,
+	output wire[15:0] RegPeek1
 	);
 	
 	assign Clk = ~Clk0;
@@ -82,9 +84,9 @@ module top(
 	wire[1:0] MuxCtrl11;
 	wire[1:0] MuxCtrl21;
 	wire[15:0] Src2_pre;
-	wire[15:0] Src2;
+	// wire[15:0] Src2;
 	wire[2:0] AluCtrl1;
-	wire[15:0] Result1;
+	// wire[15:0] Result1;
 	wire Zero1;
 	wire[3:0] RegWriteIndex2;
 	wire RegWrite2;
@@ -198,7 +200,8 @@ module top(
 		.WriteReg(RegWriteIndex3),
 		.WriteData(WriteData),
 		.ReadData1(RegData10),
-		.ReadData2(RegData20)
+		.ReadData2(RegData20),
+		.RegPeek1(RegPeek1)
 		);
 
 	extend_16 extend_160(

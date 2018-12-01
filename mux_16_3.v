@@ -10,7 +10,7 @@ module mux_16_3(
 			1: Out <= In1;
 			2: Out <= In2;
 			3: Out <= In3;
-			default: Out <= 16'bz;
+			default: Out <= In1;
 		endcase
 	end
 

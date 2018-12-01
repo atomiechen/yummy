@@ -117,22 +117,48 @@ NET "Ram2_EN" LOC = N10;
 NET "Ram2_OE" LOC = R9;
 NET "Ram2_WE" LOC = M9;
 
-NET "Src1[15]" LOC = A14;
-NET "Src1[14]" LOC = E13;
-NET "Src1[13]" LOC = D13;
-NET "Src1[12]" LOC = B13;
-NET "Src1[11]" LOC = A13;
-NET "Src1[10]" LOC = F12;
-NET "Src1[9]" LOC = E12;
-NET "Src1[8]" LOC = A12;
-NET "Src1[7]" LOC = F11;
-NET "Src1[6]" LOC = E11;
-NET "Src1[5]" LOC = D11;
-NET "Src1[4]" LOC = C11;
-NET "Src1[3]" LOC = B11;
-NET "Src1[2]" LOC = A11;
-NET "Src1[1]" LOC = E10;
-NET "Src1[0]" LOC = D10;
+NET "Src1[7]" LOC = A14;
+NET "Src1[6]" LOC = E13;
+NET "Src1[5]" LOC = D13;
+NET "Src1[4]" LOC = B13;
+NET "Src1[3]" LOC = A13;
+NET "Src1[2]" LOC = F12;
+NET "Src1[1]" LOC = E12;
+NET "Src1[0]" LOC = A12;
+
+NET "Src2[7]" LOC = F11;
+NET "Src2[6]" LOC = E11;
+NET "Src2[5]" LOC = D11;
+NET "Src2[4]" LOC = C11;
+NET "Src2[3]" LOC = B11;
+NET "Src2[2]" LOC = A11;
+NET "Src2[1]" LOC = E10;
+NET "Src2[0]" LOC = D10;
 
 NET "rdn" LOC = C14;
 NET "wrn" LOC = U5;
+
+# NET "RegPeek1[15]" LOC = 
+# NET "RegPeek1[14]" LOC = 
+NET "RegPeek1[13]" LOC = C7;
+NET "RegPeek1[12]" LOC = E8;
+NET "RegPeek1[11]" LOC = D7;
+NET "RegPeek1[10]" LOC = F8;
+NET "RegPeek1[9]" LOC = A8;
+NET "RegPeek1[8]" LOC = E7;
+NET "RegPeek1[7]" LOC = F7;
+NET "RegPeek1[6]" LOC = C9;
+NET "RegPeek1[5]" LOC = A10;
+NET "RegPeek1[4]" LOC = D9;
+NET "RegPeek1[3]" LOC = B10;
+NET "RegPeek1[2]" LOC = G9;
+NET "RegPeek1[1]" LOC = E9;
+NET "RegPeek1[0]" LOC = F9;
+
+
+
+
+
+
+
+

@@ -20,6 +20,7 @@ always@(*) begin
 		`IM8: begin
 			Dest[7:0] <= Src[7:0];
 			Dest[15:8] <= (Src[7])? 8'b11111111 : 8'b00000000;
+			// Dest <= 16'b0000000000001000;
 		end
 		`IM4: begin
 			Dest[3:0] <= Src[3:0];
