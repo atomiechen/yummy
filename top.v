@@ -56,7 +56,6 @@ module top(
 	wire[3:0] AluOp0;
 	wire[15:0] RegData10;
 	wire[15:0] RegData20;
-	//wire[1:0] Flag0;
 	wire[3:0] RegWriteIndex0;
 	wire[3:0] RegReadIndex10;
 	wire[3:0] RegReadIndex20;
@@ -86,7 +85,7 @@ module top(
 	wire[15:0] Src2_pre;
 	// wire[15:0] Src2;
 	wire[2:0] AluCtrl1;
-	// wire[15:0] Result1;
+	wire[15:0] Result1;
 	wire Zero1;
 	wire[3:0] RegWriteIndex2;
 	wire RegWrite2;
