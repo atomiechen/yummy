@@ -3,7 +3,8 @@ module top(
 	output wire rdn, // 读串口，要关闭
 	output wire wrn, // 写串口，要关闭
 	
-	input wire Clk,
+	// input wire Clk,
+	input wire Clk0,
 	input wire Rst,
 
 	output wire Ram2_EN, // Ram2 enable
@@ -102,6 +103,22 @@ module top(
 	wire[15:0] DataOut3;
 	wire[15:0] Result3;
 	wire Pause;
+
+	integer i = 0;
+	reg Clk = 0;
+	// TMP
+	always @(posedge Clk0 or negedge Rst) begin
+		if (!Rst) begin
+			// reset
+			i <= 0;
+		end
+		else if(i == 5000000) begin
+			Clk <= ~Clk;
+			i <= 0;
+		end else begin
+			i <= i + 1;
+		end
+	end
 
 	// section 4
 
