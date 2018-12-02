@@ -107,7 +107,7 @@ NET "Ram2_data[2]" LOC = T15;
 NET "Ram2_data[1]" LOC = T16;
 NET "Ram2_data[0]" LOC = U13;
 
-NET "Clk" LOC = B8;
+NET "Clk" LOC = U9;
 NET "Rst" LOC = U10;
 
 NET "Ram1_EN" LOC = M15;
@@ -137,6 +137,7 @@ NET "Src2[0]" LOC = D10;
 
 NET "rdn" LOC = C14;
 NET "wrn" LOC = U5;
+NET "data_ready" LOC = A16;
 
 # NET "RegPeek1[15]" LOC = 
 # NET "RegPeek1[14]" LOC = 

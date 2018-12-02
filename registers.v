@@ -50,7 +50,7 @@ module registers(
 		// ReadData1 = Rs == `REG0 ? 16'b0000000000000000 : r[Rs];
 		// ReadData2 = Rt == `REG0 ? 16'b0000000000000000 : r[Rt];
 
-	assign RegPeek1 = r[3];
+	assign RegPeek1 = r[6];
 	 
 	always@(negedge Clk or negedge Rst) begin
 		if (!Rst) begin

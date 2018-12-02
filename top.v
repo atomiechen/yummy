@@ -1,4 +1,5 @@
 module top(
+	input wire data_ready,
 	output wire rdn, // 读串口，要关闭
 	output wire wrn, // 写串口，要关闭
 	
@@ -18,13 +19,14 @@ module top(
 	inout wire[15:0] Ram1_data, // Ram1 data
 	output wire[15:0] Src1,
 	output wire[15:0] Src2,
+
 	output wire[15:0] RegPeek1
 	);
 	
 	// assign Clk = ~Clk0;
 	
-	assign rdn = 1;
-	assign wrn = 1;
+	// assign rdn = 1;
+	// assign wrn = 1;
 	
 	wire[15:0] PcAddr4;
 	wire[15:0] PcBAddr0;
@@ -337,12 +339,15 @@ module top(
 		.DataIn2(DataIn2),
 		.MemWrite2(MemWrite2),
 		.MemRead2(MemRead2),
+		.data_ready(data_ready),
 		.DataOut2(DataOut2),
 		.Ram1_EN(Ram1_EN),
 		.Ram1_OE(Ram1_OE),
 		.Ram1_WE(Ram1_WE),
 		.Ram1_address(Ram1_address),
-		.Ram1_data(Ram1_data)
+		.Ram1_data(Ram1_data),
+		.rdn(rdn),
+		.wrn(wrn)
 		);
 
 	// section 3
