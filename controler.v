@@ -203,7 +203,7 @@ always @(*) begin
 			Branch 		<= 		`NB;
 			Jump 		<= 		0;
 			MemRead		<= 		0;
-			AluOp 	<= 		`no_alu_op;
+			AluOp 		<= 		`no_alu_op;
 			SrcGet		<=      `IM0;
 		end
 
@@ -359,7 +359,7 @@ always @(*) begin
 				AluOp 	    <= 		`add_ctr;
 				SrcGet		<=      `IM0;
 			end
-			5'b00000:begin //MTIH
+			5'b00001:begin //MTIH
 				RegOut3 	<= 		`IH;
 				RegOut2		<=      `REG0;
 				RegOut1		<=		{1'b0, RegIn1};
@@ -462,6 +462,20 @@ always @(*) begin
 			MemRead		<= 		0;//读取内存
 			AluOp 	    <= 		`add_ctr;
 			SrcGet		<=      `IM8;//取3位立即数
+		end
+		default: begin
+			RegOut3 	<= 		`REG0;
+			RegOut2		<=      `REG0;
+			RegOut1		<=		`REG0;
+			AluSrc 		<= 		0;
+			MemotoReg 	<= 		0;
+			RegWrite	<= 		0;
+			MemWrite 	<= 		0;
+			Branch 		<= 		`NB;
+			Jump 		<= 		0;
+			MemRead		<= 		0;
+			AluOp 		<= 		`no_alu_op;
+			SrcGet		<=      `IM0;
 		end
 		
 	endcase

@@ -2,7 +2,7 @@ module top(
 	output wire rdn, // 读串口，要关闭
 	output wire wrn, // 写串口，要关闭
 	
-	input wire Clk0,
+	input wire Clk,
 	input wire Rst,
 
 	output wire Ram2_EN, // Ram2 enable
@@ -21,7 +21,7 @@ module top(
 	output wire[15:0] RegPeek1
 	);
 	
-	assign Clk = ~Clk0;
+	// assign Clk = ~Clk0;
 	
 	assign rdn = 1;
 	assign wrn = 1;
@@ -201,6 +201,7 @@ module top(
 		.Rt(RegReadIndex20),
 		.WriteReg(RegWriteIndex3),
 		.WriteData(WriteData),
+		.PcAddr0(PcAddr0),
 		.ReadData1(RegData10),
 		.ReadData2(RegData20),
 		.RegPeek1(RegPeek1)

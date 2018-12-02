@@ -3,18 +3,18 @@
 
 module registers(
 	input Rst,
-	input RegWre,              // 写使能信号，为1时，在时钟上升沿写入
+	input RegWre,              
 	input Clk,
-	input [3:0] Rs,            // rs寄存器地址输入端口
-	input [3:0] Rt,            // rt寄存器地址输入端口
-	input [3:0] WriteReg,      // 将数据写入的寄存器端口，其地址来源rt或rd字段
-	input [15:0] WriteData,    // 写入寄存器的数据输入端口
-	output [15:0] ReadData1,   // rs寄存器数据输出端口
-	output [15:0] ReadData2,    // rt寄存器数据输出端口
-	output [15:0] RegPeek1 // 查看寄存器的值
+	input [3:0] Rs,            
+	input [3:0] Rt,            
+	input [3:0] WriteReg,      
+	input [15:0] WriteData,    
+	input [15:0] PcAddr0,		
+
+	output [15:0] ReadData1,   
+	output [15:0] ReadData2,    
+	output [15:0] RegPeek1 
 	);
-
-
 
 	reg [15:0] r[15:0];
 	integer i;
@@ -23,17 +23,41 @@ module registers(
 			for(i = 0; i < 8; i = i + 1)  r[i] <= 0;
 		end
 
-	assign ReadData1 = Rs == `REG0 ? 16'b0000000000000000 : r[Rs];
-	assign ReadData2 = Rt == `REG0 ? 16'b0000000000000000 : r[Rt];
+	always @(*) begin
+		case (Rs)
+			`REG0: begin
+				ReadData1 <= 16'b0000000000000000;
+			end
+			`PC: begin
+				ReadData1 <= PcAddr0;
+			end
+			default: begin
+				ReadData1 <= r[Rs];
+			end
+		endcase
+		case (Rt)
+			`REG0: begin
+				ReadData2 <= 16'b0000000000000000;
+			end
+			`PC: begin
+				ReadData2 <= PcAddr0;
+			end
+			default: begin
+				ReadData2 <= r[Rt];
+			end
+		endcase
+	end
+		// ReadData1 = Rs == `REG0 ? 16'b0000000000000000 : r[Rs];
+		// ReadData2 = Rt == `REG0 ? 16'b0000000000000000 : r[Rt];
+
 	assign RegPeek1 = r[3];
 	 
-	 // 写寄存器
 	always@(negedge Clk or negedge Rst) begin
 		if (!Rst) begin
 			r[0] <= 16'b0000000000000000;
-			r[1] <= 16'b0000000000000001;
-			r[2] <= 16'b0000000000000001;
-			r[3] <= 16'b0000000000000011;
+			r[1] <= 16'b0000000000000000;
+			r[2] <= 16'b0000000000000000;
+			r[3] <= 16'b0000000000000000;
 			r[4] <= 16'b0000000000000000;
 			r[5] <= 16'b0000000000000000;
 			r[6] <= 16'b0000000000000000;
@@ -48,8 +72,7 @@ module registers(
 			r[15] <= 16'b0000000000000000;
 		end 
 		else
-		// 如果寄存器不为0，并且RegWre为真，写入数据
-		if (RegWre && WriteReg != 0 && WriteReg != `T)begin
+		if (RegWre && WriteReg != `REG0 && WriteReg != `T)begin
 			r[WriteReg] <= WriteData;
 		end else if(RegWre && WriteReg == `T)begin
 			r[WriteReg] <= WriteData == 0;

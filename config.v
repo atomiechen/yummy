@@ -45,7 +45,7 @@
 `define rxZeroryIH 3'b011
 //sp ih ra t pc
 
-`define REG0 4'b0000
+`define REG0 4'b1101
 `define SP 4'b1000
 `define IH 4'b1001
 `define RA 4'b1010

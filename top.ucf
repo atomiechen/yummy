@@ -107,7 +107,7 @@ NET "Ram2_data[2]" LOC = T15;
 NET "Ram2_data[1]" LOC = T16;
 NET "Ram2_data[0]" LOC = U13;
 
-NET "Clk0" LOC = U9;
+NET "Clk" LOC = B8;
 NET "Rst" LOC = U10;
 
 NET "Ram1_EN" LOC = M15;
