@@ -7,7 +7,7 @@ module alu_control(
 	);
 
 	always @(*) begin
-		case (AluOp1):
+		case (AluOp1)
 			1: begin
 				AluCtrl1 = AluOp1[2:0];
 			end
@@ -30,7 +30,7 @@ module alu_control(
 				AluCtrl1 = AluOp1[2:0];
 			end
 			8: begin
-				case (Flag1):
+				case (Flag1)
 					2'b01: begin // ADDU
 						AluCtrl1 = `ALU_ADD;
 					end
@@ -43,7 +43,7 @@ module alu_control(
 				endcase
 			end
 			9: begin
-				case (Flag1):
+				case (Flag1)
 					2'b00: begin // SLL
 						AluCtrl1 = `ALU_SLL;
 					end

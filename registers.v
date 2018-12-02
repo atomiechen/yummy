@@ -2,18 +2,18 @@
 
 
 module registers(
-	input Rst,
-	input RegWre,              
-	input Clk,
-	input [3:0] Rs,            
-	input [3:0] Rt,            
-	input [3:0] WriteReg,      
-	input [15:0] WriteData,    
-	input [15:0] PcAddr0,		
+	input wire Rst,
+	input wire RegWre,              
+	input wire Clk,
+	input wire[3:0] Rs,            
+	input wire[3:0] Rt,            
+	input wire[3:0] WriteReg,      
+	input wire[15:0] WriteData,    
+	input wire[15:0] PcAddr0,		
 
-	output [15:0] ReadData1,   
-	output [15:0] ReadData2,    
-	output [15:0] RegPeek1 
+	output reg[15:0] ReadData1,   
+	output reg[15:0] ReadData2,    
+	output wire[15:0] RegPeek1 
 	);
 
 	reg [15:0] r[15:0];
@@ -23,7 +23,7 @@ module registers(
 			for(i = 0; i < 8; i = i + 1)  r[i] <= 0;
 		end
 
-	always @(*) begin
+	always @(Rs or Rt) begin
 		case (Rs)
 			`REG0: begin
 				ReadData1 <= 16'b0000000000000000;
