@@ -162,7 +162,13 @@ module top(
 
 	im im4(
 		.Clk(Clk),
+		.Rst(Rst),
 		.AddrOut(AddrOut), 
+
+		.ImWriteAddr(ImWriteAddr),
+		.ImWriteData(ImWriteData),
+		.ImWrite(ImWrite),
+
 		.InsOut(InsOut), 
 		.Ram2_EN(Ram2_EN), 
 		.Ram2_OE(Ram2_OE), 

@@ -2,10 +2,11 @@
 
 module im(
 	input wire Clk,
+	input wire Rst, // [new]
 	input wire[15:0] AddrOut,
-	input wire[15:0] ImWriteAddr, // [new]
-	input wire[15:0] ImWriteData, // [new]
-	input wire ImWrite, // [new]
+	input wire[15:0] ImWriteAddr,
+	input wire[15:0] ImWriteData,
+	input wire ImWrite, 
 
 	output wire[15:0] InsOut,
 
@@ -36,14 +37,37 @@ module im(
 		// mem[14] = 16'b0110001100000001;
 		// mem[15] = 16'b0000100000000000;
      end
+
+	reg ImWrite_tmp;
+    reg[15:0] ImWriteAddr_tmp;
+	reg[15:0] ImWriteData_tmp;
+    reg Src_flag;
+
 	assign InsOut = Ram2_data;
 	// assign InsOut = mem[AddrOut][15:0];
 	//assign InsOut = 16'b0100100100000001;
-	assign Ram2_address = ImWrite? {2'b0, ImWriteAddr} : {2'b0, AddrOut};
-	assign Ram2_data = ImWrite? ImWriteData : 16'bZ;
+	assign Ram2_address = ImWrite_tmp? {2'b0, ImWriteAddr_tmp} : {2'b0, AddrOut};
+	assign Ram2_data = ImWrite_tmp? ImWriteData_tmp : 16'bZ;
 
 	assign Ram2_EN = 0;
-	assign Ram2_OE = ImWrite? 1 : 0; // read instruction
-	assign Ram2_WE = ImWrite? Clk : 1; // write instruction
+	assign Ram2_OE = ImWrite_tmp? 1 : 0; // read instruction
+	assign Ram2_WE = ImWrite_tmp? Clk : 1; // write instruction
+
+	always @(posedge Clk or negedge Rst) begin
+		if (!Rst) begin
+			ImWrite_tmp <= 0;
+			Src_flag <= 0;
+		end else if (ImWrite) begin
+			Src_flag <= 1;
+			ImWrite_tmp <= 0;
+			ImWriteAddr_tmp <= ImWriteAddr;
+			ImWriteData_tmp <= ImWriteData;
+		end else if (Src_flag) begin
+			Src_flag <= 0;
+			ImWrite_tmp <= 1;
+		end else begin
+			ImWrite_tmp <= 0;
+		end
+	end
 
 endmodule
