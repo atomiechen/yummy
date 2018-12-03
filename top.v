@@ -114,6 +114,9 @@ module top(
 	wire[15:0] DataOut3;
 	wire[15:0] Result3;
 	wire Pause;
+	wire[15:0] ImWriteAddr;
+	wire[15:0] ImWriteData;
+	wire ImWrite;
 
 	assign data_ready_out = data_ready;
 	assign tsre_out = tbre;
@@ -158,6 +161,7 @@ module top(
 		);
 
 	im im4(
+		.Clk(Clk),
 		.AddrOut(AddrOut), 
 		.InsOut(InsOut), 
 		.Ram2_EN(Ram2_EN), 
@@ -414,7 +418,13 @@ module top(
 		.RegWriteIndex1(RegWriteIndex1),
 		.RegReadIndex10(RegReadIndex10),
 		.RegReadIndex20(RegReadIndex20),
-		.Pause(Pause)
+		.Result1(Result1),
+		.DataIn1(Src2_pre),
+		.MemWrite1(MemWrite1),
+		.Pause(Pause),
+		.ImWriteAddr(ImWriteAddr),
+		.ImWriteData(ImWriteData),
+		.ImWrite(ImWrite)
 		);
 
 endmodule

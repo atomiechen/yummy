@@ -1,7 +1,11 @@
 `timescale 1ns / 1ps
 
 module im(
+	input wire Clk,
 	input wire[15:0] AddrOut,
+	input wire[15:0] ImWriteAddr, // [new]
+	input wire[15:0] ImWriteData, // [new]
+	input wire ImWrite, // [new]
 
 	output wire[15:0] InsOut,
 
@@ -35,11 +39,11 @@ module im(
 	assign InsOut = Ram2_data;
 	// assign InsOut = mem[AddrOut][15:0];
 	//assign InsOut = 16'b0100100100000001;
-	assign Ram2_address = {2'b0, AddrOut};
-	assign Ram2_data = 16'bZ;
+	assign Ram2_address = ImWrite? {2'b0, ImWriteAddr} : {2'b0, AddrOut};
+	assign Ram2_data = ImWrite? ImWriteData : 16'bZ;
 
 	assign Ram2_EN = 0;
-	assign Ram2_OE = 0;
-	assign Ram2_WE = 1;
+	assign Ram2_OE = ImWrite? 1 : 0; // read instruction
+	assign Ram2_WE = ImWrite? Clk : 1; // write instruction
 
 endmodule
