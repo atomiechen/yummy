@@ -8,8 +8,8 @@ module dm(
 	input wire MemWrite2,
 	input wire MemRead2,
 	input wire data_ready,
-	// input wire tbre,
-
+	input wire tbre,
+	input wire tsre,
 	output wire[15:0] DataOut2,
 
 	output wire Ram1_EN, // Ram1 enable
@@ -23,7 +23,7 @@ module dm(
 	output wire wrn
 	);
 
-	assign DataOut2 = (MemRead2 && Ram1_address == `SERIAL_STATUS)? {14'b00000000000000, 1'b1, 1'b1} : Ram1_data;
+	assign DataOut2 = (MemRead2 && Ram1_address == `SERIAL_STATUS)? {14'b00000000000000, data_ready, tsre & tbre} : Ram1_data;
 	assign Ram1_address = {2'b0, Result2};
 	assign Ram1_data = MemRead2? 16'bZ : DataIn2;
 

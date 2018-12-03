@@ -1,0 +1,176 @@
+C:/MyDownloads/iseWorkspace/modelsim/testTop1.vhd {1 {vcom -work work -2002 -explicit -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/testTop1.vhd
+Model Technology ModelSim SE-64 vcom 10.4 Compiler 2014.12 Dec  3 2014
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity testTop1
+-- Compiling architecture behavior of testTop1
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/registers.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/registers.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module registers
+
+Top level modules:
+	registers
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/test_alu_control.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/test_alu_control.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module test_alu_control
+
+Top level modules:
+	test_alu_control
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/mux_16_2.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/mux_16_2.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module mux_16_2
+
+Top level modules:
+	mux_16_2
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/mux_16_3.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/mux_16_3.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module mux_16_3
+
+Top level modules:
+	mux_16_3
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/sm_21.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/sm_21.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module sm_21
+
+Top level modules:
+	sm_21
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/alu_control.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/alu_control.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module alu_control
+
+Top level modules:
+	alu_control
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/fu.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/fu.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module fu
+
+Top level modules:
+	fu
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/top.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/top.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module top
+
+Top level modules:
+	top
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/testTop1.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/testTop1.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module testTop1
+
+Top level modules:
+	testTop1
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/extend_16.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/extend_16.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module extend_16
+
+Top level modules:
+	extend_16
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/im.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/im.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module im
+
+Top level modules:
+	im
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/branch.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/branch.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module branch
+
+Top level modules:
+	branch
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/mem_wb.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/mem_wb.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module mem_wb
+
+Top level modules:
+	mem_wb
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/add_16.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/add_16.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module add_16
+
+Top level modules:
+	add_16
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/id_ex.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/id_ex.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module id_ex
+
+Top level modules:
+	id_ex
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/hdu.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/hdu.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module hdu
+
+Top level modules:
+	hdu
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/test_alu.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/test_alu.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module test_alu
+
+Top level modules:
+	test_alu
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/dm.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/dm.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module dm
+
+Top level modules:
+	dm
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/alu.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/alu.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module alu
+
+Top level modules:
+	alu
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/if_id.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/if_id.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module if_id
+
+Top level modules:
+	if_id
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/ex_mem.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/ex_mem.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module ex_mem
+
+Top level modules:
+	ex_mem
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/pc.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/pc.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module pc
+
+Top level modules:
+	pc
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/mux_4_2.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/mux_4_2.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+-- Compiling module mux_4_2
+
+Top level modules:
+	mux_4_2
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/config.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/config.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+
+} {} {}} C:/MyDownloads/iseWorkspace/modelsim/defines.v {1 {vlog -work work -vopt -stats=none C:/MyDownloads/iseWorkspace/modelsim/defines.v
+Model Technology ModelSim SE-64 vlog 10.4 Compiler 2014.12 Dec  3 2014
+
+} {} {}}

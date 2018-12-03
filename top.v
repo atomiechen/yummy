@@ -1,10 +1,15 @@
 module top(
 	input wire data_ready,
+	input wire tsre,
+	input wire tbre,
+	output wire data_ready_out,
+	output wire tsre_out,
+	
 	output wire rdn, // 读串口，要关闭
 	output wire wrn, // 写串口，要关闭
 	
 	// input wire Clk,
-	input wire Clk0,
+	input wire Clk,
 	input wire Rst,
 
 	output wire Ram2_EN, // Ram2 enable
@@ -20,7 +25,7 @@ module top(
 	inout wire[15:0] Ram1_data, // Ram1 data
 	output wire[15:0] Src1,
 	output wire[15:0] Src2,
-
+	
 	output wire[15:0] RegPeek1
 	);
 	
@@ -104,21 +109,24 @@ module top(
 	wire[15:0] Result3;
 	wire Pause;
 
+	assign data_ready_out = data_ready;
+	assign tsre_out = tbre;
+
 	integer i = 0;
-	reg Clk = 0;
+	//reg Clk = 0;
 	// TMP
-	always @(posedge Clk0 or negedge Rst) begin
-		if (!Rst) begin
-			// reset
-			i <= 0;
-		end
-		else if(i == 5000000) begin
-			Clk <= ~Clk;
-			i <= 0;
-		end else begin
-			i <= i + 1;
-		end
-	end
+	//always @(posedge Clk0 or negedge Rst) begin
+	//	if (!Rst) begin
+	//		// reset
+	//		i <= 0;
+	//	end
+	//	else if(i == 500) begin
+	//		Clk <= ~Clk;
+	//		i <= 0;
+	//	end else begin
+	//		i <= i + 1;
+	//	end
+	//end
 
 	// section 4
 
@@ -364,7 +372,9 @@ module top(
 		.Ram1_address(Ram1_address),
 		.Ram1_data(Ram1_data),
 		.rdn(rdn),
-		.wrn(wrn)
+		.wrn(wrn),
+		.tsre(tsre),
+		.tbre(tbre)
 		);
 
 	// section 3
