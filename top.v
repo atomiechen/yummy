@@ -1,3 +1,8 @@
+/*
+	TODO
+	delete some output wire 
+*/
+
 module top(
 	input wire data_ready,
 	input wire tsre,
@@ -8,8 +13,8 @@ module top(
 	output wire rdn, // 读串口，要关闭
 	output wire wrn, // 写串口，要关闭
 	
-	// input wire Clk,
-	input wire Clk,
+	//input wire Clk,
+	input wire Clk0,
 	input wire Rst,
 
 	output wire Ram2_EN, // Ram2 enable
@@ -26,7 +31,8 @@ module top(
 	output wire[15:0] Src1,
 	output wire[15:0] Src2,
 	
-	output wire[15:0] RegPeek1
+	output wire[15:0] RegPeek1,
+	output wire[15:0] PcAddr4 
 	);
 	
 	// assign Clk = ~Clk0;
@@ -34,7 +40,7 @@ module top(
 	// assign rdn = 1;
 	// assign wrn = 1;
 	
-	wire[15:0] PcAddr4;
+	//wire[15:0] PcAddr4;
 	wire[15:0] PcBAddr0;
 	wire[1:0] PcNextAddr0;
 	wire [15:0] AddrIn;
@@ -113,20 +119,22 @@ module top(
 	assign tsre_out = tbre;
 
 	integer i = 0;
-	//reg Clk = 0;
-	// TMP
-	//always @(posedge Clk0 or negedge Rst) begin
-	//	if (!Rst) begin
-	//		// reset
-	//		i <= 0;
-	//	end
-	//	else if(i == 500) begin
-	//		Clk <= ~Clk;
-	//		i <= 0;
-	//	end else begin
-	//		i <= i + 1;
-	//	end
-	//end
+	/*reg Clk = 0;
+	//TMP
+	always @(posedge Clk0 or negedge Rst) begin
+		if (!Rst) begin
+			// reset
+			i <= 0;
+		end
+		else if(i == 1) begin
+			Clk <= ~Clk;
+			i <= 0;
+		end else begin
+			i <= i + 1;
+		end
+	end*/
+	wire Clk;
+	assign Clk = Clk0;
 
 	// section 4
 
