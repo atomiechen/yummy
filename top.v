@@ -122,22 +122,22 @@ module top(
 	assign tsre_out = tbre;
 
 	integer i = 0;
-	/*reg Clk = 0;
+	reg Clk = 0;
 	//TMP
 	always @(posedge Clk0 or negedge Rst) begin
 		if (!Rst) begin
 			// reset
 			i <= 0;
 		end
-		else if(i == 1) begin
+		else if(i == 2) begin
 			Clk <= ~Clk;
 			i <= 0;
 		end else begin
 			i <= i + 1;
 		end
-	end*/
-	wire Clk;
-	assign Clk = Clk0;
+	end
+	//wire Clk;
+	//assign Clk = Clk0;
 
 	// section 4
 
