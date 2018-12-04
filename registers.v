@@ -11,8 +11,8 @@ module registers(
 	input wire[15:0] WriteData,    
 	input wire[15:0] PcAddr0,		
 
-	output reg[15:0] ReadData1,   
-	output reg[15:0] ReadData2,    
+	output wire[15:0] ReadData1,   
+	output wire[15:0] ReadData2,    
 	output wire[15:0] RegPeek1 
 	);
 
