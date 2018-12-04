@@ -23,32 +23,33 @@ module registers(
 			for(i = 0; i < 8; i = i + 1)  r[i] <= 0;
 		end
 
-	always @(Rs or Rt) begin
-		case (Rs)
-			`REG0: begin
-				ReadData1 <= 16'b0000000000000000;
-			end
-			`PC: begin
-				ReadData1 <= PcAddr0;
-			end
-			default: begin
-				ReadData1 <= r[Rs];
-			end
-		endcase
-		case (Rt)
-			`REG0: begin
-				ReadData2 <= 16'b0000000000000000;
-			end
-			`PC: begin
-				ReadData2 <= PcAddr0;
-			end
-			default: begin
-				ReadData2 <= r[Rt];
-			end
-		endcase
-	end
-		// ReadData1 = Rs == `REG0 ? 16'b0000000000000000 : r[Rs];
-		// ReadData2 = Rt == `REG0 ? 16'b0000000000000000 : r[Rt];
+	// always @(Rs or Rt) begin
+	// 	case (Rs)
+	// 		`REG0: begin
+	// 			ReadData1 <= 16'b0000000000000000;
+	// 		end
+	// 		`PC: begin
+	// 			ReadData1 <= PcAddr0;
+	// 		end
+	// 		default: begin
+	// 			ReadData1 <= r[Rs];
+	// 		end
+	// 	endcase
+	// 	case (Rt)
+	// 		`REG0: begin
+	// 			ReadData2 <= 16'b0000000000000000;
+	// 		end
+	// 		`PC: begin
+	// 			ReadData2 <= PcAddr0;
+	// 		end
+	// 		default: begin
+	// 			ReadData2 <= r[Rt];
+	// 		end
+	// 	endcase
+	// end
+
+	assign ReadData1 = (Rs == `REG0? 16'b0000000000000000 : (Rs == `PC? PcAddr0 : r[Rs]));
+	assign ReadData2 = (Rt == `REG0? 16'b0000000000000000 : (Rt == `PC? PcAddr0 : r[Rt]));
 
 	assign RegPeek1 = r[7];
 	 
@@ -70,8 +71,7 @@ module registers(
 			r[13] <= 16'b0000000000000000;
 			r[14] <= 16'b0000000000000000;
 			r[15] <= 16'b0000000000000000;
-		end 
-		else
+		end else
 		if (RegWre && WriteReg != `REG0 && WriteReg != `T)begin
 			r[WriteReg] <= WriteData;
 		end else if(RegWre && WriteReg == `T)begin
