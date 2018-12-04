@@ -15,34 +15,58 @@ module fu(
 	// reg mark2 = 1;
 
 	always @(*) begin
-		/*mark1 = 1;
-		mark2 = 1;*/
-		
-		if (RegWrite3 || RegWrite2) begin
-			if (RegWrite3) begin // phase 3 need to write a register
-				if (RegReadIndex11 == RegWriteIndex3) begin
-					MuxCtrl11 <= 3;
-					// mark1 <= 0;
-				end
-				if (RegReadIndex21 == RegWriteIndex3) begin
-					MuxCtrl21 <= 3;
-					// mark2 <= 0;
-				end
-			end	
-			if (RegWrite2) begin // phase 2 need to write a register
-				if (RegReadIndex11 == RegWriteIndex2) begin
+		if (RegWrite2) begin
+			if (RegReadIndex11 == RegWriteIndex2) begin
 					MuxCtrl11 <= 2;
-					// mark1 <= 0;
-				end
-				if (RegReadIndex21 == RegWriteIndex2) begin
-					MuxCtrl21 <= 2;
-					// mark2 <= 0;
-				end
-			end		
+			end else begin
+				MuxCtrl11 <= 1;
+			end
+			if (RegReadIndex21 == RegWriteIndex2) begin
+				MuxCtrl21 <= 2;
+			end else begin
+				MuxCtrl21 <= 1;
+			end
+		end else if (RegWrite3) begin
+			if (RegReadIndex11 == RegWriteIndex3) begin
+				MuxCtrl11 <= 3;
+			end else begin
+				MuxCtrl11 <= 1;
+			end
+			if (RegReadIndex21 == RegWriteIndex3) begin
+				MuxCtrl21 <= 3;
+			end else begin
+				MuxCtrl21 <= 1;
+			end
 		end else begin
 			MuxCtrl11 <= 1;
 			MuxCtrl21 <= 1;
 		end
+
+		// if (RegWrite3 || RegWrite2) begin
+		// 	if (RegWrite3) begin // phase 3 need to write a register
+		// 		if (RegReadIndex11 == RegWriteIndex3) begin
+		// 			MuxCtrl11 <= 3;
+		// 			// mark1 <= 0;
+		// 		end
+		// 		if (RegReadIndex21 == RegWriteIndex3) begin
+		// 			MuxCtrl21 <= 3;
+		// 			// mark2 <= 0;
+		// 		end
+		// 	end	
+		// 	if (RegWrite2) begin // phase 2 need to write a register
+		// 		if (RegReadIndex11 == RegWriteIndex2) begin
+		// 			MuxCtrl11 <= 2;
+		// 			// mark1 <= 0;
+		// 		end
+		// 		if (RegReadIndex21 == RegWriteIndex2) begin
+		// 			MuxCtrl21 <= 2;
+		// 			// mark2 <= 0;
+		// 		end
+		// 	end		
+		// end else begin
+		// 	MuxCtrl11 <= 1;
+		// 	MuxCtrl21 <= 1;
+		// end
 		
 		/*if (mark1) begin
 			MuxCtrl11 <= 1;
