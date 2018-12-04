@@ -129,7 +129,7 @@ module top(
 			// reset
 			i <= 0;
 		end
-		else if(i == 2) begin
+		else if(i == 1) begin
 			Clk <= ~Clk;
 			i <= 0;
 		end else begin

@@ -23,16 +23,19 @@ module dm(
 	output wire wrn
 	);
 
-	assign DataOut2 = (MemRead2 && Ram1_address == `SERIAL_STATUS)? {14'b00000000000000, data_ready, tsre & tbre} : Ram1_data;
+	assign DataOut2 = Ram1_data;
+	// assign DataOut2 = (MemRead2 && Result2 == `SERIAL_STATUS)? {14'b00000000000000, data_ready, tsre && tbre} : Ram1_data;
+	assign Ram1_data = MemRead2 ? 
+		(Result2 == `SERIAL_STATUS ? {14'b00000000000000, data_ready, tsre && tbre} : 16'bZ) : DataIn2;
 	assign Ram1_address = {2'b0, Result2};
-	assign Ram1_data = MemRead2? 16'bZ : DataIn2;
+	// assign Ram1_data = MemRead2? 16'bZ : DataIn2;
 
-	assign Ram1_EN = ((MemWrite2 || MemRead2) && (Ram1_address != `SERIAL_DATA))? 0 : 1;
-	assign Ram1_OE = (MemRead2 && (Ram1_address != `SERIAL_DATA))? 0 : 1; // read RAM
-	assign Ram1_WE = (MemWrite2 && (Ram1_address != `SERIAL_DATA))? Clk : 1; // write RAM
+	assign Ram1_EN = ((MemWrite2 || MemRead2) && (Result2 != `SERIAL_DATA))? 0 : 1;
+	assign Ram1_OE = (MemRead2 && (Result2 != `SERIAL_DATA))? 0 : 1; // read RAM
+	assign Ram1_WE = (MemWrite2 && (Result2 != `SERIAL_DATA))? Clk : 1; // write RAM
 
-	assign rdn = (MemRead2 && Ram1_address == `SERIAL_DATA)? Clk : 1;
-	assign wrn = (MemWrite2 && Ram1_address == `SERIAL_DATA)? Clk : 1;
+	assign rdn = (MemRead2 && Result2 == `SERIAL_DATA)? Clk : 1;
+	assign wrn = (MemWrite2 && Result2 == `SERIAL_DATA)? Clk : 1;
 
 	// assign rdn = (MemWrite2 || MemRead2)? 1 : 0;
 	// assign wrn = (MemWrite2 || MemRead2)? 1 : 0;
