@@ -11,36 +11,80 @@ module fu(
 	output reg[1:0] MuxCtrl21
     );
 
-	// reg mark1 = 1;
-	// reg mark2 = 1;
-
 	always @(*) begin
-		if (RegWrite2) begin
-			if (RegReadIndex11 == RegWriteIndex2) begin
+		case ({RegWrite2, RegWrite3})
+			2'b00: begin
+				MuxCtrl11 <= 1;
+				MuxCtrl21 <= 1;
+			end
+			2'b01: begin
+				if (RegReadIndex11 == RegWriteIndex3) begin
+					MuxCtrl11 <= 3;
+				end else begin
+					MuxCtrl11 <= 1;
+				end
+				if (RegReadIndex21 == RegWriteIndex3) begin
+					MuxCtrl21 <= 3;
+				end else begin
+					MuxCtrl21 <= 1;
+				end
+			end
+			2'b10: begin
+				if (RegReadIndex11 == RegWriteIndex2) begin
 					MuxCtrl11 <= 2;
-			end else begin
-				MuxCtrl11 <= 1;
+				end else begin
+					MuxCtrl11 <= 1;
+				end
+				if (RegReadIndex21 == RegWriteIndex2) begin
+					MuxCtrl21 <= 2;
+				end else begin
+					MuxCtrl21 <= 1;
+				end
 			end
-			if (RegReadIndex21 == RegWriteIndex2) begin
-				MuxCtrl21 <= 2;
-			end else begin
-				MuxCtrl21 <= 1;
+			2'b11: begin
+				if (RegReadIndex11 == RegWriteIndex2) begin
+					MuxCtrl11 <= 2;
+				end else if (RegReadIndex11 == RegWriteIndex3) begin
+					MuxCtrl11 <= 3;
+				end else begin
+					MuxCtrl11 <= 1;
+				end
+				if (RegReadIndex21 == RegWriteIndex2) begin
+					MuxCtrl21 <= 2;
+				end else if (RegReadIndex21 == RegWriteIndex3) begin
+					MuxCtrl21 <= 3;
+				end else begin
+					MuxCtrl21 <= 1;
+				end
 			end
-		end else if (RegWrite3) begin
-			if (RegReadIndex11 == RegWriteIndex3) begin
-				MuxCtrl11 <= 3;
-			end else begin
-				MuxCtrl11 <= 1;
-			end
-			if (RegReadIndex21 == RegWriteIndex3) begin
-				MuxCtrl21 <= 3;
-			end else begin
-				MuxCtrl21 <= 1;
-			end
-		end else begin
-			MuxCtrl11 <= 1;
-			MuxCtrl21 <= 1;
-		end
+		endcase
+
+		// if (RegWrite2) begin
+		// 	if (RegReadIndex11 == RegWriteIndex2) begin
+		// 		MuxCtrl11 <= 2;
+		// 	end else begin
+		// 		MuxCtrl11 <= 1;
+		// 	end
+		// 	if (RegReadIndex21 == RegWriteIndex2) begin
+		// 		MuxCtrl21 <= 2;
+		// 	end else begin
+		// 		MuxCtrl21 <= 1;
+		// 	end
+		// end else if (RegWrite3) begin
+			// if (RegReadIndex11 == RegWriteIndex3) begin
+			// 	MuxCtrl11 <= 3;
+			// end else begin
+			// 	MuxCtrl11 <= 1;
+			// end
+			// if (RegReadIndex21 == RegWriteIndex3) begin
+			// 	MuxCtrl21 <= 3;
+			// end else begin
+			// 	MuxCtrl21 <= 1;
+			// end
+		// end else begin
+		// 	MuxCtrl11 <= 1;
+		// 	MuxCtrl21 <= 1;
+		// end
 
 		// if (RegWrite3 || RegWrite2) begin
 		// 	if (RegWrite3) begin // phase 3 need to write a register
