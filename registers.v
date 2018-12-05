@@ -11,8 +11,8 @@ module registers(
 	input wire[15:0] WriteData,    
 	input wire[15:0] PcAddr0,		
 
-	output reg[15:0] ReadData1,   
-	output reg[15:0] ReadData2,    
+	output wire[15:0] ReadData1,   
+	output wire[15:0] ReadData2,    
 	output wire[15:0] RegPeek1 
 	);
 
@@ -51,7 +51,7 @@ module registers(
 	assign ReadData1 = (Rs == `REG0? 16'b0000000000000000 : (Rs == `PC? PcAddr0 : r[Rs]));
 	assign ReadData2 = (Rt == `REG0? 16'b0000000000000000 : (Rt == `PC? PcAddr0 : r[Rt]));
 
-	assign RegPeek1 = r[7];
+	assign RegPeek1 = r[2];
 	 
 	always@(negedge Clk or negedge Rst) begin
 		if (!Rst) begin
@@ -75,7 +75,7 @@ module registers(
 		if (RegWre && WriteReg != `REG0 && WriteReg != `T)begin
 			r[WriteReg] <= WriteData;
 		end else if(RegWre && WriteReg == `T)begin
-			r[WriteReg] <= WriteData == 0;
+			r[WriteReg] <= WriteData != 0;
 		end
 	 end 
 
