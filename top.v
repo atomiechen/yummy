@@ -10,8 +10,8 @@ module top(
 	output wire data_ready_out,
 	output wire tsre_out,
 	
-	output wire rdn, // 读串口，要关闭
-	output wire wrn, // 写串口，要关闭
+	output wire rdn, // ???????
+	output wire wrn, // ???????
 	
 	//input wire Clk,
 	input wire Clk0,
@@ -136,8 +136,8 @@ module top(
 			i <= i + 1;
 		end
 	end
-	//wire Clk;
-	//assign Clk = Clk0;
+	// wire Clk;
+	// assign Clk = Clk0;
 
 	// section 4
 
@@ -301,7 +301,7 @@ module top(
 		.Dest1(Dest1)
 		);
 
-	mux_16_3 mux_16_311( //涓婇潰鐨刴ux鍙栧嚭readdata1
+	mux_16_3 mux_16_311( //?????ux???readdata1
 		.In1(RegData11),
 		.In2(Result2),
 		.In3(WriteData),
@@ -309,7 +309,7 @@ module top(
 		.Out(Src1)
 		);
 
-	mux_16_3 mux_16_321( //涓嬮潰鐨刴ux鍙栧嚭readdata2
+	mux_16_3 mux_16_321( //?????ux???readdata2
 		.In1(RegData21),
 		.In2(Result2),
 		.In3(WriteData),
